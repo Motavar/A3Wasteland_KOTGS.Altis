@@ -106,24 +106,8 @@ _setStatus =
 if (["A3W_showGunStoreStatus"] call isConfigOn) then
 {
 
-//Check each store to see if their state has changed and then calls the update function to make the display the correct state.
-showmarkers = true;
-while {showmarkers} do
-{
-		{
-			_npc = _x;
 
-			if (_npc getVariable ["Side",""] == "WEST") then
-			{
-				[_forEachIndex, "WEST", true] call _setStatus;
-			};
-			
-			if (_npc getVariable ["Side",""] == "EAST") then
-			{
-				[_forEachIndex, "EAST", true] call _setStatus;
-			};
-			
-		
+		{
 			// SCAN THROUGH ALL STORES AND RECORD THEIR STATUS
 			//=================================================
 			if (vehicleVarName _x =="GunStore1") then
@@ -166,6 +150,129 @@ while {showmarkers} do
 			{
 				_GS8 = _x getVariable ['Side',''];
 			};
+			
+		} forEach _gunStores;
+
+
+
+
+//Check each store to see if their state has changed and then calls the update function to make the display the correct state.
+showmarkers = true;
+while {showmarkers} do
+{
+		{
+			_npc = _x;
+
+			if (_npc getVariable ["Side",""] == "WEST") then
+			{
+				[_forEachIndex, "WEST", true] call _setStatus;
+			};
+			
+			if (_npc getVariable ["Side",""] == "EAST") then
+			{
+				[_forEachIndex, "EAST", true] call _setStatus;
+			};
+			
+		
+			// SCAN THROUGH ALL STORES AND RECORD THEIR STATUS
+			//=================================================
+			if (vehicleVarName _x =="GunStore1") then
+			{
+				if ( _x getVariable ['Side',''] != _GS1) then 
+				{
+					_GS1 = _x getVariable ['Side',''];
+					playSound "thunder_1";
+					playSound "air_raid";
+					hint format ["Gun Store #1 BASE CAPTURED!"];
+				};				
+			};
+
+			if (vehicleVarName _x =="GunStore2") then
+			{
+				if ( _x getVariable ['Side',''] != _GS2) then 
+				{
+					_GS2 = _x getVariable ['Side',''];
+					playSound "thunder_1";
+					playSound "air_raid";
+					hint format ["Gun Store #2 CAPTURED!"];
+				};				
+			};
+
+
+			if (vehicleVarName _x =="GunStore3") then
+			{
+				if ( _x getVariable ['Side',''] != _GS3) then 
+				{
+					_GS3 = _x getVariable ['Side',''];
+					playSound "thunder_1";
+					playSound "air_raid";
+					hint format ["Gun Store #3 CAPTURED!"];
+				};				
+
+			};
+
+
+			if (vehicleVarName _x =="GunStore4") then
+			{
+				if ( _x getVariable ['Side',''] != _GS4) then 
+				{
+					_GS4 = _x getVariable ['Side',''];
+					playSound "thunder_1";
+					playSound "air_raid";
+					hint format ["Gun Store #4 CAPTURED!"];
+				};				
+
+			};
+
+
+			if (vehicleVarName _x =="GunStore5") then
+			{
+				
+				if ( _x getVariable ['Side',''] != _GS5) then 
+				{
+					_GS5 = _x getVariable ['Side',''];
+					playSound "thunder_1";
+					playSound "air_raid";
+					hint format ["Gun Store #5 CAPTURED!"];
+				};				
+			};
+
+
+			if (vehicleVarName _x =="GunStore6") then
+			{
+				if ( _x getVariable ['Side',''] != _GS6) then 
+				{
+					_GS6 = _x getVariable ['Side',''];
+					playSound "thunder_1";
+					playSound "air_raid";
+					hint format ["Gun Store #6 CAPTURED!"];
+				};				
+			};
+
+
+			if (vehicleVarName _x =="GunStore7") then
+			{
+				if ( _x getVariable ['Side',''] != _GS7) then 
+				{
+					_GS7 = _x getVariable ['Side',''];
+					playSound "thunder_1";
+					playSound "air_raid";
+					hint format ["Gun Store #7 CAPTURED!"];
+				};				
+				
+			};
+
+			if (vehicleVarName _x =="GunStore8") then
+			{
+				if ( _x getVariable ['Side',''] != _GS8) then 
+				{
+					_GS8 = _x getVariable ['Side',''];
+					playSound "thunder_1";
+					playSound "air_raid";
+					hint format ["Gun Store #8 BASE CAPTURED!"];
+				};				
+			};
+
 			
 		} forEach _gunStores;
 
